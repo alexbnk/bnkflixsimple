@@ -23,10 +23,9 @@ var users = getFromLocalStorage() || [
 
 var buy = function (id,price) {
 
-//  users[0].credits = users[0].credits - price;
-//  users[0].collection.push(id);
-
-
+  users[0].credits = users[0].credits - price;
+  users[0].collection.push(id);
+  console.log(users[0].credits, users[0].collection)
   saveToStorage();
 
 };
@@ -37,14 +36,15 @@ localStorage.setItem('users', JSON.stringify(users));
 
 };
 
+var clearCollection = function() {
 
-
-var addToCollection = function () {
-
-saveToStorage();
-
-
+  var itemsInCollection = users[0].collection.length;
+    console.log("Cleaning: " + itemsInCollection +" items")
+    users[0].collection=[];
+    console.log("Cleaned, collection has:"+users[0].collection.length+ " items now")
+      saveToStorage()
 };
+
 
 var load = function (option) {
   console.log("User credits:"+users[0].credits)
@@ -71,15 +71,19 @@ saveToStorage();
 
 
 
-}
+};
+
+//var collectionCount = users[0].collection.length;
 
 
-  var collection = [];
+  // var collection = [];
 
   var userObj = {
       users: users[0],
       buy : buy,
-      load : load
+      load : load,
+      clearCollection: clearCollection,
+      //collectionCount: users[0].collection.length;
     }
 
 

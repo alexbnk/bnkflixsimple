@@ -51,6 +51,9 @@
 
 <div class="container">
 
+<div class="row">
+  <div class="col-6">
+
 <div class="container" style="margin-top: 50px;" ng-controller="usersCtrl">
   <div class="page-header" >
     <h2>Profile Management</h2>
@@ -67,12 +70,28 @@
        <button class="btn btn-success" ng-click="userObj.load(3)">$50</button>
        <button class="btn btn-warning" ng-click="userObj.load(4)">$100</button>
        </p>
+</div>
+  <div class="container">
+       <div class="page-header" >
+         <h2>Collection</h2> </div>
+         <div ng-controller="usersCtrl">
+           <p>You have {{userObj.users.collection.length}} movies in your collection </p>
+           <p><button class="btn btn-danger" ng-click="clearCollection()">Clear collection</button></p>
+         </div>
+         <div class="container movies" ng-controller="listMoviewsCtrl">
+
+             <div class="container" style="width: 25%; display: inline-block;" ng-repeat="movie in usercollection track by $index">
+                           <div class="card-w75 movie" ng-click="showMovie($index)" style="display : block;width: 200px;">
+                             <h4>{{movie.Title}}</h4>
+                             <img ng-src="{{movie.Poster}}">
+                             </div>
+                           </div>
+
+           </div>
 
 
 
 
-     </p>
-   </div>
 
 
 
@@ -95,6 +114,9 @@
 
 <script src="/Users/usersFactory.js"></script>
 <script src="/Users/usersControllers.js"></script>
+<script src="/Movies/moviesFactory.js"></script>
+<script src="/Movies/moviesControllers.js"></script>
+
 <!-- This is my controllers file -->
 
   </script>
