@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.movie {
+
+}
+
+.navbar-nav li input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
